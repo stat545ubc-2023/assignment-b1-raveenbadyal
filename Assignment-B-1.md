@@ -174,4 +174,4 @@ test_that("Testing lb to kg conversion function", {
 })
 ```
 
-    ## Test passed 🎊
+    ## Test passed 😀
