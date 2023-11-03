@@ -3,6 +3,9 @@ Assignment B1
 Raveen Badyal
 3-Nov-2023
 
+These are the packages required for this assignment. The code below
+loads the packages, assuming they have been installed first.
+
 ``` r
 library(tidyverse)
 ```
@@ -19,7 +22,6 @@ library(tidyverse)
     ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
 ``` r
-library(lubridate)
 library(devtools)
 ```
 
@@ -52,23 +54,18 @@ library(testthat)
     ## 
     ##     matches
 
-``` r
-library(digest)
-```
-
 ### Exercise 1-2: Make and Document a Function
 
 ``` r
-#' Title: Pounds to Kilograms
+#' Pounds to Kilograms
 #'
-#' My function will take an input, in pounds, and return the conversion to kilograms rounded to 1 decimal point for conciseness.
+#' This function will take an input, in pounds, and return the conversion to kilograms rounded to 2 decimal points for conciseness. Only inputs greater than 0.02 can be inputted. If a smaller input is made, the function will specify that it can't compute the conversion.
 #'
-#' @param The argument for this function is lb. The symbol/abbreviation for pounds in lb. This is a numeric argument.
+#' @param The argument for this function is lb. Lb is the symbol/abbreviation for pounds. This is a numeric argument. The inputs must be greater than 0.02.
 #'
-#' @return The function returns a number, kg, which is the converted inputted pounds into kilograms. The output is limited to two digits for conciseness.
-```
+#' @return The function returns a number, kg, which is the converted inputted pounds into kilograms. The output is limited to two decimal places for conciseness.
 
-``` r
+
 lb_to_kg <- function(lb) {
   if(!is.numeric(lb)) {
     return('This function only works for numeric input.')
@@ -83,13 +80,13 @@ lb_to_kg <- function(lb) {
 
 ### Exercise 3: Include examples
 
-The following examples are a few numeric inputs for lb, including one
-input with decimal places. I have included a smaller number, and a
-larger number, also the same with decimals, an very small input less
-than 1 and an input with many decimal places. At first, I limited my
-function to two digits total. When I tested the below inputs with that
-function, the larger number inputs were capped, and returned “454”. I
-was able to see an error in the functionality of my function, and
+The following examples are a few numeric inputs for lb, including inputs
+with decimal places. I have included a smaller number, and a larger
+number (1, 10). Also inputs with decimals places, one less than 1
+(0.0343) and the second, much greater (1000.474745). At first, I limited
+my function to two digits total. When I tested the below inputs with
+that function, the larger number inputs were capped, and returned “454”.
+I was able to see an error in the functionality of my function, and
 changed the function so there was a limit on decimal places and not the
 number of digits of the output.
 
@@ -98,12 +95,6 @@ lb_to_kg(0.0343)
 ```
 
     ## [1] 0.02
-
-``` r
-lb_to_kg(5)
-```
-
-    ## [1] 2.27
 
 ``` r
 lb_to_kg(1)
@@ -131,7 +122,7 @@ lb_to_kg(1000.474745)
 
 The following examples are numeric inputs for lb, that are too small to
 acheive a result as this function’s output is limited to 2 decimal
-points.
+places.
 
 ``` r
 lb_to_kg(0)
